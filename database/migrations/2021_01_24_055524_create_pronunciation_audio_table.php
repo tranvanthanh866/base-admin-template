@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePronunciationsTable extends Migration
+class CreatePronunciationAudioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreatePronunciationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pronunciations', function (Blueprint $table) {
+        Schema::create('pronunciation_audio', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('describe_id')->unsigned();
-            $table->string('uk_ipa', 191)->nullable();
-            $table->string('us_ipa', 191)->nullable();
+            $table->bigInteger('pronunciation_id');
+            $table->string('action_audio', 5);
+            $table->string('type_audio', 10);
+            $table->string('url', 191);
             $table->timestamps();
-
-            $table->foreign('describe_id')->references('id')->on('describes')->onDelete('cascade');
         });
     }
 
@@ -31,6 +30,6 @@ class CreatePronunciationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pronunciations');
+        Schema::dropIfExists('pronciation_audio');
     }
 }

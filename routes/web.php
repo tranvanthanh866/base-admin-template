@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\WordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [IndexController::class, 'index'])->name('home');
 
-Route::name('admin.')->group(function () {
-    Route::get('/admin-template', function () {
+Route::get('/{slugWord}', [IndexController::class, 'show'])->name('word.show');
+
+Route::resources([
+    'words' => WordController::class,
+]);
+
+Route::name('admin.')->prefix('admin')->group(function () {
+    Route::get('/template', function () {
         return view('admin.template-admin');
-    })->name('admin-template');
+    })->name('template');
 });

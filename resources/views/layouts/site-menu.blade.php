@@ -14,7 +14,7 @@
                                     <span> Dashboard </span> 
                                 </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/admin/dashboard">Dashboard</a></li>
+                                    <li><a href="/dashboard">Dashboard</a></li>
                                 </ul>
                             </li>
 
@@ -25,7 +25,7 @@
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/admin/words">Words</a></li>
+                                    <li><a href="{{route('words.index')}}">Words</a></li>
                                 </ul>
                             </li>
 
